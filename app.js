@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import {config} from 'dotenv'
 config()
-import productsRouter from './routes/products.routes.js';
+import productsRouter from './src/routes/products.routes.js';
 
 const app = express();
 
