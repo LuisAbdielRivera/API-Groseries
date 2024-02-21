@@ -24,7 +24,7 @@
             </div>
         </div>
         <div data-role="content">
-            <form action="/api/products/" method="POST">
+            <form action="/" method="POST">
                 <input type="text" name="barcode" placeholder="Código de Barras">
                 <input type="text" name="description" placeholder="Descripcion">
                 <input type="text" name="brand" placeholder="Marca">
@@ -55,8 +55,8 @@
                                     <li>Costo: <%= product.cost %></li>
                                     <li>Existencia: <%= product.stock %></li>
                                     <li>Fecha de Caducidad: <%= product.expiredDate %></li>
-                                    <li><a href="/api/products/<%= product.barcode %>" class="ui-btn">Edit</a></li>
-                                    <li><a href="/api/products/delete/<%= product.barcode %>" class="ui-btn">Delete</a></li>
+                                    <li><a href="/<%= product.barcode %>" class="ui-btn">Edit</a></li>
+                                    <li><a href="/delete/<%= product.barcode %>" class="ui-btn">Delete</a></li>
                                 </ul>
                             </div>
                     <% }) %>
