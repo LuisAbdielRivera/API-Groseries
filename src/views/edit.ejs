@@ -24,7 +24,7 @@
             </div>
         </div>
         <div data-role="content">
-            <form  action="/api/products/<%= product.barcode %>" method="POST">
+            <form  action="/<%= product.barcode %>" method="POST">
                 <input type="text" name="barcode" placeholder="Código de Barras" value="<%= product.barcode %>">
                 <input type="text" name="description" placeholder="Descripcion" value="<%= product.description %>">
                 <input type="text" name="brand" placeholder="Marca" value="<%= product.brand %>">
