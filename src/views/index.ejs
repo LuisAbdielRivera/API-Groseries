@@ -54,6 +54,7 @@
                                     <li>Precio: <%= product.price %></li>
                                     <li>Costo: <%= product.cost %></li>
                                     <li>Existencia: <%= product.stock %></li>
+                                    <li class="list-group-item"><%= (product.status == 0) ? "No Disponible" : "Disponible" %></li>
                                     <li>Fecha de Caducidad: <%= product.expiredDate %></li>
                                     <li><a href="/<%= product.barcode %>" class="ui-btn">Edit</a></li>
                                     <li><a href="/delete/<%= product.barcode %>" class="ui-btn">Delete</a></li>
