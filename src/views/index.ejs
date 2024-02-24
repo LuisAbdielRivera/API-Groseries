@@ -68,7 +68,7 @@
         }
 
         .custom-navbar {
-            background-color: #36acb49a;
+            background-color: #1dacb6be;
             color: #2292dd;
             padding: 10px;
         }
@@ -91,6 +91,15 @@
             padding: 14px 16px;
             text-decoration: none;
         }
+
+        .custom-navbar h1 {
+            color: #030303;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
+        }
+
 
         .custom-navbar li a:hover {
             background-color: #36acb49a;
@@ -160,7 +169,11 @@
             <div class="card-container">
                 <% products.forEach((product) => { %>
                     <div class="card">
-                        <h4> <%= product.brand %> </h4>
+                        <h4 style=" color: #030303;
+                                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                                    margin: 0;
+                                    letter-spacing: 2px;
+                                    font-family: 'Arial', sans-serif;"> <%= product.brand %> </h4>
                         <img src="data:image/png;base64,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" alt="logo">
                         <ul>
                             <li>Codigo de Barras: <%= product.barcode %></li>
