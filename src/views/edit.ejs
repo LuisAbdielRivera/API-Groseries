@@ -9,21 +9,61 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <title>Abarrotes TI</title>
+    <style>
+                body {
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .custom-navbar {
+            background-color: #36acb49a;
+            color: #2292dd;
+            padding: 10px;
+        }
+
+        .custom-navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .custom-navbar li {
+            float: left;
+        }
+
+        .custom-navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .custom-navbar li a:hover {
+            background-color: #36acb49a; /* Color de fondo al pasar el ratón */
+        }
+
+    </style>
 </head>
 
 <body>
-    <div data-role="page" data-theme="b">
-        <div data-role="header">
+    <div data-role="page">
+        <div data-role="header" class="custom-navbar">
             <h1>Abarrotes TI</h1>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="/" data-icon="home">Inicio</a></li>
-                    <li><a href="/" data-icon="eye" class="ui-btn-active">Productos</a></li>
-                    <li><a href="/user/register" data-icon="user">Empleados</a></li>
-                </ul>
-            </div>
+            <ul>
+                <li><a href="/" data-icon="home">Home</a></li>
+                <li><a href="/" data-icon="eye" class="ui-btn-active">Products</a></li>
+            </ul>
         </div>
         <div data-role="content">
+            <div data-role="content" class="form-container">
             <form  action="/<%= product.barcode %>" method="POST">
                 <input type="text" name="barcode" placeholder="Código de Barras" value="<%= product.barcode %>">
                 <input type="text" name="description" placeholder="Descripcion" value="<%= product.description %>">
@@ -40,6 +80,7 @@
                 </select>
                     <input type="submit" value="Saved">
             </form>
+            </div>
         </div>
         <div data-role="footer">
             <h5>Developed by Abdiel</h5>

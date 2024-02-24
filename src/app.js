@@ -3,7 +3,6 @@ import morgan from "morgan";
 import {config} from 'dotenv'
 config()
 import productsRouter from './routes/products.routes.js';
-import userRouter from './routes/user.routes.js'
 
 const app = express();
 
@@ -16,6 +15,5 @@ app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev'));
 
 app.use('/', productsRouter);
-app.use('/', userRouter)
 
 export default app;
