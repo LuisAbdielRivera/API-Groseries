@@ -17,9 +17,9 @@
             <h1>Abarrotes TI</h1>
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#" data-icon="home">Inicio</a></li>
-                    <li><a href="#" data-icon="eye" class="ui-btn-active">Productos</a></li>
-                    <li><a href="#" data-icon="user">Empleados</a></li>
+                    <li><a href="/" data-icon="home">Inicio</a></li>
+                    <li><a href="/" data-icon="eye" class="ui-btn-active">Productos</a></li>
+                    <li><a href="/register/products" data-icon="user">Empleados</a></li>
                 </ul>
             </div>
         </div>
@@ -49,6 +49,7 @@
                         <div data-role="collapsible" data-filtertext="<%= product.description %>">
                             <h1><%= product.description %></h1>
                                 <ul data-role="listview" data-inset="false">
+                                    <img style="width: 15%; padding: 10px;" src="https://uploads.turbologo.com/uploads/design/hq_preview_image/1274589/draw_svg20210507-22909-q202z5.svg.png" alt="logo-tienda">
                                     <li>Codigo de Barras: <%= product.barcode %></li>
                                     <li>Marca: <%= product.brand %></li>
                                     <li>Precio: <%= product.price %></li>
