@@ -32,9 +32,7 @@
 
                 <input type="submit" value="Submit">
             </form>
-            <form>
-                <input data-type="search" id="searchForCollapsibleSetChildren">
-            </form>
+            
                 <div data-role="collapsibleset" data-filter="true" data-children="> div, > div div ul li" data-inset="true" id="collapsiblesetForFilterChildren" data-input="#searchForCollapsibleSetChildren">
                     <% users.forEach((user) => { %>
                         <div data-role="collapsible" data-filtertext="<%= user.name %>">

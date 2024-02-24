@@ -27,7 +27,7 @@ export const insertUser = (req, res) => {
     userDAO.insertUser (req.body)
     .then(result => {
         if(result)
-            res.redirect('/register/products')
+            res.redirect('/')
     })
     .catch(err=>res.json({status: "Server unaviable"}))
 }
@@ -36,7 +36,7 @@ export const updateUser = (req, res) => {
     userDAO.updateUser (req.params.identify, req.body)
     .then(result => {
         if(result)
-            res.redirect('/register/products')
+            res.redirect('/')
         else
             res.json({status: "Server unaviable"})
     })
@@ -47,7 +47,7 @@ export const deleteUser = (req, res) => {
     userDAO.deleteUser (req.params.identify)
     .then(result => {
         if(result)
-            res.redirect('/register/products')
+            res.redirect('/')
         else
             res.json({status: "Server unaviable"})
     })
