@@ -9,95 +9,21 @@
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <title>Abarrotes TI</title>
-    <style>
-        body {
-            background-color: #f2f2f2;
-        }
-
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        
-        .custom-navbar h1 {
-            color: #030303;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin: 0;
-            letter-spacing: 2px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .custom-navbar {
-            background-color: #36acb49a;
-            color: #2292dd;
-            padding: 10px;
-        }
-
-        .custom-navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .custom-navbar li {
-            float: left;
-        }
-
-        .custom-navbar li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .custom-navbar li a:hover {
-            background-color: #36acb49a; 
-        }
-
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .social-media {
-            margin-bottom: 20px;
-        }
-
-        .social-media a {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .social-media img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .social-media img:hover {
-            transform: scale(1.2);
-        }
-    </style>
 </head>
 
 <body>
-    <div data-role="page">
-        <div data-role="header" class="custom-navbar">
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
             <h1>Abarrotes TI</h1>
-            <ul>
-                <li><a href="/" data-icon="home">Home</a></li>
-            </ul>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-icon="home">Inicio</a></li>
+                    <li><a href="#" data-icon="eye" class="ui-btn-active">Productos</a></li>
+                    <li><a href="#" data-icon="user">Empleados</a></li>
+                </ul>
+            </div>
         </div>
         <div data-role="content">
-            <div data-role="content" class="form-container">
             <form  action="/<%= product.barcode %>" method="POST">
                 <input type="text" name="barcode" placeholder="Código de Barras" value="<%= product.barcode %>">
                 <input type="text" name="description" placeholder="Descripcion" value="<%= product.description %>">
@@ -114,21 +40,9 @@
                 </select>
                     <input type="submit" value="Saved">
             </form>
-            </div>
         </div>
-        <div data-role="footer" class="footer">
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=100042446782930&mibextid=ZbWKwL" target="_blank">
-                    <img src="data:image/png;base64,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" alt="Facebook">
-                </a>
-                <a href="https://github.com/LuisAbdielRivera" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/016/833/872/original/github-logo-git-hub-icon-on-white-background-free-vector.jpg" alt="Github">
-                </a>
-                <a href="https://www.instagram.com/abdiel_rivera245?igsh=eWJ5Mzk4ZGhoNTQy" target="_blank">
-                    <img src="https://img.freepik.com/vector-premium/icono-instagram-estilo-corte-papel-iconos-redes-sociales_505135-235.jpg" alt="Instagram">
-                </a>
-            </div>
-            <h5>©Developed by Abdiel</h5>
+        <div data-role="footer">
+            <h5>Developed by Abdiel</h5>
         </div>
     </div>
 </body>

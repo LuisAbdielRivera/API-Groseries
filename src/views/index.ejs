@@ -8,144 +8,23 @@
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        body {
-            background-color: #f2f2f2;
-        }
-
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 20px;
-            justify-items: center;
-        }
-
-        .card {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card img {
-            width: 80%;
-            max-width: 200px;
-            height: auto;
-            padding: 10px;
-        }
-
-        .card ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .card h4 {
-            color: #000;
-        }
-
-        .card li {
-            margin-bottom: 5px;
-            color: #000;
-        }
-
-        .card-actions {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .custom-navbar {
-            background-color: #1dacb6be;
-            color: #2292dd;
-            padding: 10px;
-        }
-
-        .custom-navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .custom-navbar li {
-            float: left;
-        }
-
-        .custom-navbar li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .custom-navbar h1 {
-            color: #030303;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin: 0;
-            letter-spacing: 2px;
-            font-family: 'Arial', sans-serif;
-        }
-
-
-        .custom-navbar li a:hover {
-            background-color: #36acb49a;
-        }
-
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .social-media {
-            margin-bottom: 20px;
-        }
-
-        .social-media a {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .social-media img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .social-media img:hover {
-            transform: scale(1.2);
-        }
-    </style>
     <title>Abarrotes TI</title>
 </head>
 
 <body>
-    <div data-role="page">
-        <div data-role="header" class="custom-navbar">
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
             <h1>Abarrotes TI</h1>
-            <ul>
-                <li><a href="/" data-icon="home">Home</a></li>
-            </ul>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-icon="home">Inicio</a></li>
+                    <li><a href="#" data-icon="eye" class="ui-btn-active">Productos</a></li>
+                    <li><a href="#" data-icon="user">Empleados</a></li>
+                </ul>
+            </div>
         </div>
-        <div data-role="content" >
-            <div data-role="content" class="form-container">
-            <form action="/" method="POST" enctype="multipart/form-data">
+        <div data-role="content">
+            <form action="/" method="POST">
                 <input type="text" name="barcode" placeholder="Código de Barras">
                 <input type="text" name="description" placeholder="Descripcion">
                 <input type="text" name="brand" placeholder="Marca">
@@ -162,48 +41,31 @@
 
                 <input type="submit" value="Submit">
             </form>
+            <form>
+                <input data-type="search" id="searchForCollapsibleSetChildren">
+            </form>
+                <div data-role="collapsibleset" data-filter="true" data-children="> div, > div div ul li" data-inset="true" id="collapsiblesetForFilterChildren" data-input="#searchForCollapsibleSetChildren">
+                    <% products.forEach((product) => { %>
+                        <div data-role="collapsible" data-filtertext="<%= product.description %>">
+                            <h1><%= product.description %></h1>
+                                <ul data-role="listview" data-inset="false">
+                                    <li>Codigo de Barras: <%= product.barcode %></li>
+                                    <li>Marca: <%= product.brand %></li>
+                                    <li>Precio: <%= product.price %></li>
+                                    <li>Costo: <%= product.cost %></li>
+                                    <li>Existencia: <%= product.stock %></li>
+                                    <li>Fecha de Caducidad: <%= product.expiredDate %></li>
+                                    <li><a href="/<%= product.barcode %>" class="ui-btn">Edit</a></li>
+                                    <li><a href="/delete/<%= product.barcode %>" class="ui-btn">Delete</a></li>
+                                </ul>
+                            </div>
+                    <% }) %>
+                </div>
         </div>
-            
-            <div class="card-container">
-                <% products.forEach((product) => { %>
-                    <div class="card">
-                        <h4 style=" color: #030303;
-                                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-                                    margin: 0;
-                                    letter-spacing: 2px;
-                                    font-family: 'Arial', sans-serif;"> <%= product.brand %> </h4>
-                        <img src="data:image/png;base64,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" alt="logo">
-                        <ul>
-                            <li>Codigo de Barras: <%= product.barcode %></li>
-                            <li>Marca: <%= product.description %></li>
-                            <li>Precio: <%= product.price %></li>
-                            <li>Costo: <%= product.cost %></li>
-                            <li>Existencia: <%= product.stock %></li>
-                            <li><%= (product.status == 0) ? "No Disponible" : "Disponible" %></li>
-                            <li>Fecha de Caducidad: <%= product.expiredDate %></li>
-                        </ul>
-                        <div class="card-actions">
-                            <a href="/<%= product.barcode %>" class="ui-btn" style="background-color: #EFCC00; border: #EFCC00; color: #FFF;">Edit</a>
-                            <a href="/delete/<%= product.barcode %>" class="ui-btn" style="background-color: #FF0000; border: #FF0000; color: #FFF;">Delete</a>
-                        </div>
-                    </div>
-                <% }) %>
-            </div>
-        </div>
-        <div data-role="footer" class="footer">
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=100042446782930&mibextid=ZbWKwL" target="_blank">
-                    <img src="data:image/png;base64,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" alt="Facebook">
-                </a>
-                <a href="https://github.com/LuisAbdielRivera" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/016/833/872/original/github-logo-git-hub-icon-on-white-background-free-vector.jpg" alt="Github">
-                </a>
-                <a href="https://www.instagram.com/abdiel_rivera245?igsh=eWJ5Mzk4ZGhoNTQy" target="_blank">
-                    <img src="https://img.freepik.com/vector-premium/icono-instagram-estilo-corte-papel-iconos-redes-sociales_505135-235.jpg" alt="Instagram">
-                </a>
-            </div>
-            <h5>©Developed by Abdiel</h5>
+        <div data-role="footer">
+            <h5>Developed by Abdiel</h5>
         </div>
     </div>
 </body>
+
 </html>
